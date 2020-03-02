@@ -1,0 +1,12 @@
+.main .content{
+    background-color: white;
+    min-height: calc(100% - 84px);
+    padding: 16px 16px;
+}
+
+.myright .myheader .mytag .breadcrumb {
+    height: 34px;
+    line-height: 34px;
+    background-color: inherit;
+    padding: 0;
+}

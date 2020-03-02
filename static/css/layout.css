@@ -1,0 +1,110 @@
+body {
+    width: 100%;
+    height: 100%;
+    background: #f0f2f5;
+}
+
+.mycontent {
+    width: 100%;
+    height: 100%;
+    background: #f0f2f5;
+}
+
+.myleft {
+    width: 220px;
+    height: 100%;
+    background-color: rgb(48, 65, 86);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.myright {
+    width: calc(100% - 220px);
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 220px;
+    background: #f0f2f5;
+}
+
+.myright .myheader {
+    width: calc(100% - 220px);
+    height: 84px;
+    position: fixed;
+    top: 0;
+    left: 220px;
+    z-index: 1000;
+}
+
+.myright .myheader .mynav {
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    padding: 0 32px;
+    line-height: 40px;
+}
+
+.myright .myheader .mytag {
+    width: 100%;
+    height: 34px;
+    background: #fff;
+    border-bottom: 1px solid #d8dce5;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.12),0 0 3px 0 rgba(0,0,0,.04);
+    box-shadow: 0 1px 3px 0
+    rgba(0,0,0,.12),0 0 3px 0
+        rgba(0,0,0,.04);
+    padding: 0 32px;
+}
+
+
+.myright .main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 84px;
+    padding: 16px 16px;
+    background: #f0f2f5;
+}
+
+.float-left {
+    height: 50px;
+    line-height: 44px;
+}
+
+.float-right {
+    height: 40px;
+    line-height: 40px;
+    padding: 5px 0;
+}
+
+.dropdown {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 6px;
+}
+
+#dropdownMenuLink {
+    height: 40px;
+    line-height: 40px;
+    padding: calc(100% - 22px) 0;
+    text-decoration: none;
+}
+
+
+.mynav .dropdown-menu {
+    margin-top: 0.4rem;
+    padding: 0;
+    min-width: inherit;
+}
+
+.dropdown-item {
+    font-size: 14px;
+    line-height: 28px;
+    padding: .15rem 1.5rem;
+}
+
+.mynav .dropdown:hover {
+    background-color: #f0f2f5;
+    border-radius: 4px;
+}

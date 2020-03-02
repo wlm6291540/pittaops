@@ -1,0 +1,22 @@
+{% extends "tpl/main.html" %}
+{% load static %}
+
+{% block include_css %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+
+{% block tags %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page">主页</li>
+            <li class="breadcrumb-item" aria-current="page">用户管理</li>
+            <li class="breadcrumb-item active" aria-current="page">角色管理</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h4>角色管理</h4>
+    </div>
+{% endblock %}
