@@ -1,5 +1,6 @@
 .nav {
     width: 100%;
+    margin-top: 36px;
 }
 
 
@@ -19,8 +20,14 @@
     padding: 4px 20px;
 }
 
-.nav .card .card-header h2 button {
-    color: rgb(191, 203, 217);
+.nav .card .card-header p {
+    font-size: 24px;
+    margin: 0;
+}
+
+.nav .card .card-header p a {
+    line-height: 34px;
+    padding-top: 3px;
 }
 
 .nav .card .card-body {
@@ -32,7 +39,7 @@
 .nav .card .card-body .list-group-item {
     height: 48px;
     line-height: 40px;
-    padding: 4px 20px;
+    padding: 8px 30px;
     color: rgb(191, 203, 217);
     border: none;
     border-radius: 0;
@@ -59,28 +66,33 @@
     color: rgb(191, 203, 217);
 }
 
-.arrow {
-        width: 6px;
-    height: 6px;
-    border-top: 1px solid #999;
-    border-right: 1px solid #999;
-    transform: rotate(-45deg);
-    position: absolute;
-    top: 21px;
-    right: 20px;
+.text-left {
+    text-align: left;
+    padding-left: 25px;
 }
 
-.btn.btn-block.nav-text+.arrow {
+.arrow {
     width: 6px;
     height: 6px;
-    border-top: 1px solid #999;
-    border-right: 1px solid #999;
+    border-top: 1px solid #FFF;
+    border-right: 1px solid #FFF;
     transform: rotate(-45deg);
-    position: absolute;
-    top: 21px;
-    right: 20px;
+    position: relative;
+    top: 12px;
+    right: 15px;
 }
 
-.btn.btn-block.nav-text.collapsed+.arrow{
+.btn.nav-text>.arrow {
+    width: 6px;
+    height: 6px;
+    border-top: 1px solid #FFF;
+    border-right: 1px solid #FFF;
+    transform: rotate(-45deg);
+    position: relative;
+    top: 12px;
+    right: 15px;
+}
+
+.btn.nav-text.collapsed>.arrow{
     transform: rotate(135deg);
 }

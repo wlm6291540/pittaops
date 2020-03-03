@@ -1,0 +1,132 @@
+{% extends "tpl/main.html" %}
+{% load static %}
+
+{% block include_css %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+
+{% block tags %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page">主页</li>
+            <li class="breadcrumb-item" aria-current="page">用户管理</li>
+            <li class="breadcrumb-item active" aria-current="page">部门管理</li>
+        </ol>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h4>部门管理</h4>
+        <div>
+            <div>
+                <div id="toolbar">
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addDept">+ 新增
+                    </button>
+                    <button class="btn btn-danger">删除</button>
+                    <a class="btn btn-info">修改</a>
+                </div>
+                <table id="table" data-toggle="table">
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 添加窗口 -->
+    <div class="modal" id="addDept" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">新增</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group center-block row">
+                        <label for="parent">所属部门</label>
+                        <select class="form-control", id="parent" name="parent">
+                            <div class="dtree">
+
+                            </div>
+                        </select>
+                    </div>
+                    <div class="form-group center-block">
+                        <label for="name">部门名称</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="部门名称">
+                    </div>
+                    <div class="form-group center-block">
+                        <label for="type">部门类型</label>
+                        <select class="form-control" id="type" name="type" placeholder="部门类型">
+                          <option value="unit">单位</option>
+                          <option value="department" selected>部门</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">重置</button>
+                    <button type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+{% endblock %}
+
+{% block myscript %}
+    <script>
+        $('#table').bootstrapTable({
+            url: '/user/department/list',
+            striped: true,                      //是否显示行间隔色
+            sortable: true,
+            sortOrder: 'asc',
+            checkboxEnabled: true,
+            showRefresh: true,
+            showToggle: true,
+            search: true,
+            showColumns: true,
+            minimumCountColumns: 2,
+            clickToSelect: true,
+            pagination: true,
+            sidePagination: "client",
+            pageNumber: 1,
+            pageSize: 10,
+            paginationFirstText: "首页",
+            paginationPreText: "上一页",
+            paginationNextText: "下一页",
+            paginationLastText: "末页",
+            buttonsClass: 'primary',
+            toolbar: '#toolbar',
+
+            columns: [{
+                field: 'state',//id
+                checkbox: true,//checkbox
+                align: 'center',//对其方式
+                valign: 'middle'//对其方式
+            }, {
+                field: 'id',
+                title: '部门Id',
+                sortable: true,
+            }, {
+                field: 'name',
+                title: '部门名称',
+                sortable: true,
+            }, {
+                field: 'type',
+                title: '部门类型'
+            }, {
+                field: 'parent__name',
+                title: '上级部门'
+            }]
+        });
+
+        d = new dTree('d');
+        d.add(0,-1,'My example tree',);
+        d.add(1,0,'Node 1','example01.html');
+        d.add(2,0,'Node 2','example01.html');
+        d.add(3,1,'Node 1.1','example01.html');
+        d.add(4,0,'Node 3','example01.html');
+        d.add(5,3,'Node 1.1.1','example01.html');
+        d.add(6,5,'Node 1.1.1.1','example01.html');
+        document.write(d);
+    </script>
+{% endblock %}

@@ -67,13 +67,19 @@ body {
     background: #f0f2f5;
 }
 
-.float-left {
+.nav-header-left {
     height: 50px;
+    line-height: 44px;
+    padding: 3px 0px;
+}
+
+.nav-header-left svg {
+    height: 44px;
     line-height: 44px;
 }
 
-.float-right {
-    height: 40px;
+.nav-header-right {
+    height: 50px;
     line-height: 40px;
     padding: 5px 0;
 }
@@ -81,7 +87,8 @@ body {
 .dropdown {
     height: 40px;
     line-height: 40px;
-    padding: 0 6px;
+    padding: 0px 6px;
+    text-decoration: none;
 }
 
 #dropdownMenuLink {
@@ -89,6 +96,7 @@ body {
     line-height: 40px;
     padding: calc(100% - 22px) 0;
     text-decoration: none;
+    color: #4e555b;
 }
 
 
@@ -96,6 +104,7 @@ body {
     margin-top: 0.4rem;
     padding: 0;
     min-width: inherit;
+    text-decoration-line: none;
 }
 
 .dropdown-item {
@@ -107,4 +116,8 @@ body {
 .mynav .dropdown:hover {
     background-color: #f0f2f5;
     border-radius: 4px;
+}
+
+.dropdown-item:hover {
+    text-decoration-line: none;
 }

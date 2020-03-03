@@ -1,0 +1,33 @@
+.text-decoration-none {
+    text-decoration: none;
+}
+
+text-white {
+    color: white;
+}
+
+.nav-text:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.modal {
+    top: 180px;
+}
+
+.modal-body {
+    padding: 5px 20px;
+}
+
+.modal-body .form-group {
+    width: 400px;
+}
+
+.modal-body .form-group label {
+    margin-right: 10px;
+}
+
+.modal-body .form-control {
+    display: inline;
+    max-width: 300px;
+}

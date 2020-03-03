@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'user.MiddleWare.LoginMiddleWare',
+    'user.middleware.LoginMiddleWare',
 
 ]
 
@@ -79,12 +79,13 @@ WSGI_APPLICATION = 'pittaops.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '106.13.163.133',
-        'PORT': '33060',
-        'NAME': 'pittaops2',
+        'HOST': '192.168.200.126',
+        'PORT': '3306',
+        'NAME': 'pittaops',
         'USER': 'root',
-        'PASSWORD': 'wlm@6291540',
+        'PASSWORD': 'ychg@123',
         'CHARSET': 'utf8mb4',
+        'CONN_MAX_AGE': 30
     }
 }
 
