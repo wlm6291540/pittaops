@@ -2,54 +2,56 @@
 {% load static %}
 
 {% block include_css %}
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'css/metroStyle/metroStyle.css' %}">
 {% endblock %}
 
 {% block tags %}
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item" aria-current="page">主页</li>
-            <li class="breadcrumb-item" aria-current="page">用户管理</li>
-            <li class="breadcrumb-item active" aria-current="page">部门管理</li>
-        </ol>
-    </nav>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">主页</li>
+        <li class="breadcrumb-item" aria-current="page">用户管理</li>
+        <li class="breadcrumb-item active" aria-current="page">部门管理</li>
+    </ol>
+</nav>
 {% endblock %}
 
 {% block content %}
-    <div class="content">
-        <h4>部门管理</h4>
+<div class="content">
+    <h4>部门管理</h4>
+    <div>
         <div>
-            <div>
-                <div id="toolbar">
-                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addDept">+ 新增
-                    </button>
-                    <button class="btn btn-danger">删除</button>
-                    <a class="btn btn-info">修改</a>
-                </div>
-                <table id="table" data-toggle="table">
-                </table>
+            <div id="toolbar">
+                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addDept">+ 新增
+                </button>
+                <button class="btn btn-danger" type="button" id="delete">删除</button>
+                <a class="btn btn-info" type="button" id="edit">修改</a>
             </div>
+            <table id="table" data-toggle="table">
+            </table>
         </div>
-
     </div>
 
-    <!-- 添加窗口 -->
-    <div class="modal" id="addDept" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">新增</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group center-block row">
-                        <label for="parent">所属部门</label>
-                        <select class="form-control", id="parent" name="parent">
-                            <div class="dtree">
+</div>
 
-                            </div>
-                        </select>
+<!-- 添加窗口 -->
+<div class="modal" id="addDept" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新增</h4>
+            </div>
+            <form id="addDeptForm">
+                <div class="modal-body">
+
+                    <div class="form-group center-block">
+                        <label for="parent">所属部门</label>
+                        <textarea class="form-control selectTree" id="parent" name="parent" checks="1" type="text"
+                                  readonly>
+                    </textarea>
+
                     </div>
                     <div class="form-group center-block">
                         <label for="name">部门名称</label>
@@ -58,28 +60,84 @@
                     <div class="form-group center-block">
                         <label for="type">部门类型</label>
                         <select class="form-control" id="type" name="type" placeholder="部门类型">
-                          <option value="unit">单位</option>
-                          <option value="department" selected>部门</option>
+                            <option value="unit" selected>单位</option>
+                            <option value="department">部门</option>
                         </select>
                     </div>
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">重置</button>
-                    <button type="button" class="btn btn-primary">保存</button>
+                    <button type="button" class="btn btn-default" id="close" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary" id="create">保存</button>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- 修改窗口 -->
+<div class="modal" id="editDept" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改</h4>
+            </div>
+            <form id="editDeptForm">
+                <div class="modal-body">
+                    <div class="form-group center-block">
+                        <label for="eparent">所属部门</label>
+                        <textarea class="form-control selectTree" id="eparent" name="eparent" checks="1" type="text"
+                                  readonly>
+                    </textarea>
+
+                    </div>
+                    <div class="form-group center-block">
+                        <label for="name">部门名称</label>
+                        <input type="text" class="form-control" id="ename" name="ename" placeholder="部门名称">
+                    </div>
+                    <div class="form-group center-block">
+                        <label for="type">部门类型</label>
+                        <select class="form-control" id="etype" name="etype" placeholder="部门类型">
+                            <option value="unit" selected>单位</option>
+                            <option value="department">部门</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="editClose" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="editSave">保存</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 {% endblock %}
 
 {% block myscript %}
-    <script>
+<script type="text/javascript" src="{% static 'js/ztree/jquery.ztree.all.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/ztree/MultipleTreeSelect.js' %}"></script>
+<script>
+    // 重新加载表格
+    function reloadTable() {
+        renderSelectTree();
+        $("#table").bootstrapTable('destroy');
+        loadTable();
+
+    }
+
+    // 加载表格
+    function loadTable() {
         $('#table').bootstrapTable({
             url: '/user/department/list',
             striped: true,                      //是否显示行间隔色
             sortable: true,
             sortOrder: 'asc',
             checkboxEnabled: true,
+            singleSelect: true,
             showRefresh: true,
             showToggle: true,
             search: true,
@@ -112,21 +170,155 @@
                 sortable: true,
             }, {
                 field: 'type',
-                title: '部门类型'
+                title: '部门类型',
+                formatter: function (value, item, index) {
+                    if (value == 'unit') {
+                        return '单位'
+                    } else {
+                        return '部门'
+                    }
+                }
             }, {
                 field: 'parent__name',
                 title: '上级部门'
             }]
         });
+    }
 
-        d = new dTree('d');
-        d.add(0,-1,'My example tree',);
-        d.add(1,0,'Node 1','example01.html');
-        d.add(2,0,'Node 2','example01.html');
-        d.add(3,1,'Node 1.1','example01.html');
-        d.add(4,0,'Node 3','example01.html');
-        d.add(5,3,'Node 1.1.1','example01.html');
-        d.add(6,5,'Node 1.1.1.1','example01.html');
-        document.write(d);
-    </script>
+    // 渲染下拉选择树
+    function renderSelectTree() {
+        $.get('/user/department/list', {},
+            function (data, status) {
+                let zNodes = [];
+                $(data.rows).each(function (index, item) {
+                    zNodes.push({id: item.id, pId: item.parent, name: item.name});
+                });
+                let defaults = {
+                    zNodes: zNodes,
+                    height: 200,   // 默认自定义下拉框高度
+                    chkStyle: "radio"
+                }
+
+                $(document).ready(function () {
+                    $("textarea").drawMultipleTree(defaults);
+                });
+            }
+        );
+    }
+
+    // 新增单位或部门表单验证
+    $('form').bootstrapValidator({
+        message: 'This value is not valid',
+        fields: {
+            name: {
+                message: "部门名输入错误",
+                validators: {
+                    notEmpty: {
+                        message: "部门名不能为空"
+                    }
+                }
+            }
+        }
+    })
+
+    $("addDeptClose").click(function () {
+        bootstrapValidator.resetForm(true);
+    })
+
+    //新增
+    $("#create").click(function () {
+        let parent = $("input[name$=parent]").val();
+        let name = $("#name").val();
+        let type = $("#type").val();
+        var bootstrapValidator = $("#addDeptForm").data('bootstrapValidator');
+        bootstrapValidator.validate();
+        if (bootstrapValidator.isValid()) {
+            $.post(
+                '/user/department/create',
+                {'type': type, 'name': name, 'parent': parent},
+                function (data, status) {
+                    if (data.result == true) {
+                        bootstrapValidator.resetForm(true);
+                        $("#addDept").modal('hide');
+                        reloadTable();
+                        toastr.success(data.msg);
+                    } else {
+                        toastr.warning(data.msg);
+                    }
+                    bootstrapValidator.resetForm(true);
+                }
+            )
+        }
+    });
+
+    // 删除部门
+    $("#delete").click(function () {
+        let row = $("#table").bootstrapTable('getSelections');
+        if (row != null) {
+            $.post(
+                '/user/department/delete',
+                {id: JSON.stringify($(row).attr("id"))},
+                function (data, status) {
+                    if (data.result == true) {
+                        toastr.success(data.msg);
+                        reloadTable();
+                    } else {
+                        toastr.warning(data.msg);
+                    }
+                }
+            )
+        }
+    });
+
+    //渲染修改表单
+    function renderEditModal(row) {
+        $("input[name$=eparent]").val($(row).attr('parent'));
+        $("#eparent").val($(row).attr("parent__name"));
+        $("#ename").val($(row).attr("name"));
+        $('#etype').val($(row).attr('type'));
+    }
+
+    $("#edit").click(function () {
+        let row = $("#table").bootstrapTable("getSelections");
+        if (row.length == 1) {
+            renderEditModal(row);
+            $("#editDept").modal('show');
+        } else {
+            toastr.warning('没有选中数据');
+        }
+    });
+
+    // 修改
+    $("#editSave").click(function () {
+        console.log("run");
+        let parent = $("input[name$=eparent]").val();
+        let name = $("#ename").val();
+        let type = $("#etype").val();
+        let row = $("#table").bootstrapTable("getSelections");
+        let id = $(row).attr("id")
+        var bootstrapValidator = $("#editDeptForm").data('bootstrapValidator');
+        bootstrapValidator.validate();
+        if (bootstrapValidator.isValid()) {
+            $.post(
+                '/user/department/update',
+                {'id': id, 'type': type, 'name': name, 'parent': parent},
+                function (data, status) {
+                    if (data.result == true) {
+                        bootstrapValidator.resetForm(true);
+                        $("#editDept").modal('hide');
+                        reloadTable();
+                        toastr.success(data.msg);
+                    } else {
+                        toastr.warning(data.msg);
+                    }
+                    bootstrapValidator.resetForm(true);
+                }
+            )
+        }
+    });
+
+
+    loadTable();
+    renderSelectTree();
+</script>
 {% endblock %}

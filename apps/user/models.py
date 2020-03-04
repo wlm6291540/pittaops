@@ -53,7 +53,7 @@ class Department(models.Model):
     type_choice = (("unit", "单位"), ("department", "部门"))
     name = models.CharField(max_length=60, verbose_name="名称")
     type = models.CharField(max_length=30, choices=type_choice, default="department", verbose_name="类型")
-    parent = models.ForeignKey("self", null=True, blank=True, on_delete=models.SET_NULL, verbose_name="父部门")
+    parent = models.ForeignKey("self", null=True, blank=True, on_delete=models.CASCADE, verbose_name="父部门")
 
     class Meta:
         verbose_name = "组织架构"

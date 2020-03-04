@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'pittaops.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '192.168.200.126',
-        'PORT': '3306',
+        'HOST': '192.168.200.125',
+        'PORT': '33060',
         'NAME': 'pittaops',
         'USER': 'root',
-        'PASSWORD': 'ychg@123',
+        'PASSWORD': 'wlm@6291540',
         'CHARSET': 'utf8mb4',
         'CONN_MAX_AGE': 30
     }

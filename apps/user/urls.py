@@ -4,7 +4,7 @@ from django.urls import path
 
 from user.views import LoginView, UserMainView, PermissionMainView, RoleMainView, MainView
 from user.views import LogoutView, DepartmentMainView
-from user.views import DepartmentCreateView, DepartmentListView, DepartmentTreeListView
+from user.views import DepartmentCreateView, DepartmentListView, DepartmentDeleteView, DepartmentUpdateView
 
 user_urls = [
     path('login', LoginView.as_view(), name="login"),
@@ -24,7 +24,8 @@ dept_urls = [
     path('user/department', DepartmentMainView.as_view(), name='department'),
     path('user/department/create', DepartmentCreateView.as_view(), name='department create'),
     path('user/department/list', DepartmentListView.as_view(), name='department list'),
-    path('user/department/tree', DepartmentTreeListView.as_view(), name='department tree list'),
+    path('user/department/delete', DepartmentDeleteView.as_view(), name='department delete'),
+    path('user/department/update', DepartmentUpdateView.as_view(), name='department update'),
 ]
 
 user_urls += dept_urls
